@@ -1,0 +1,12 @@
+<%- include ('../partials/header.ejs') %>
+<main id="page-body" class="flex-1 flex flex-col gap-2 items-center justify-center">
+    <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
+    <form action="/users/login" method="post" id="login-form" class="p-8 w-1/5 h-1/4 rounded-xl shadow-lg bg-secondary flex flex-col justify-between">
+        <div class="w-full flex flex-col gap-4">
+            <input id="email" type="email" name="email" class="w-full p-4 rounded-lg" placeholder="Email Address" />
+            <input id="pass" type="password" name="password" class="w-full p-4 rounded-lg" placeholder="Password" />
+        </div>
+        <input id="login-btn" type="submit" value="Login" class="px-8 py-4 rounded-lg bg-white bg-primary opacity-75 hover:cursor-pointer hover:opacity-100 font-bold text-xl" />
+    </form>
+</main>
+<%- include ('../partials/footer.ejs') %>

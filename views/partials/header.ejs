@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaHub - A Marketplace for all things Manga!</title>
+    <link type="image/x-icon" rel="icon" href="/images/mangahub-logo.ico"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: "#003366",
+                secondary: "#E94E77",
+                background: "#F9F9F9",
+                accent: "#B0B0B0",
+                text: "#333333"
+              }
+            }
+          }
+        }
+      </script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+<body class="min-w-[1200px] mx-auto h-screen flex flex-col bg-background">
+    <header class="h-24 flex items-center border-b-2 border-black justify-between relative">
+        <div class="h-full">
+            <a href="/" class="flex justify-center items-center h-full">
+                <img alt="manga hub logo" class="size-full" src="/images/mangahub-logo.png"/>
+                <h1 class="font-semibold text-text text-2xl">MangaHub</h1>
+            </a>
+        </div>
+        <form action="/manga" class="flex-1 text-center" method="get">
+            <input type="search" name="search" value="<%= search ? search : '' %>" class="w-2/6 p-3 rounded-full border-black border-2 outline-none" placeholder="Search..."/>
+        </form>
+        <ul class="flex gap-4 text-center font-bold pr-4">
+            <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/manga">Browse</a></li>
+            <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/manga/sell">Sell</a></li>
+            <% if (!user) { %>
+              <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/users/login">Login</a></li>
+              <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/users/new">Signup</a></li>
+            <% } else { %>
+              <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/users/profile">My Account</a></li>
+              <li class="p-3 text-text min-w-[90px] hover:text-secondary"><a href="/users/logout">Logout</a></li>
+            <% } %>
+        </ul>
+        <% if(errorMessages && errorMessages.length > 0) {%>
+          <% errorMessages.forEach(message=>{%>
+              <div class='error'>
+                  <%=message%>
+              </div>
+          <%});%>
+        <%}%>
+        <% if(successMessages && successMessages.length > 0) {%>
+            <% successMessages.forEach(message=>{%>
+                <div class='success'>
+                    <%=message%>
+                </div>
+            <%});%>
+        <%}%>
+    </header>

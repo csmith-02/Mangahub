@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>
+<main class="flex-1 flex flex-col items-center justify-center p-8 gap-4">
+    <div class="w-3/5 h-4/5 grid grid-cols-2">
+        <div class="flex justify-center items-center">
+            <img alt="manga image" class="max-w-[400px] max-h-[500px]" src="/images/<%= manga.image %>" />
+        </div>
+        <div class="flex flex-col items-start justify-evenly">
+            <h1 class="font-semibold text-3xl mb-3 pb-2 border-b-2 border-black"><%= manga.title %></h1>
+            <h1 class="text-gray-600">Condition: <%= manga.condition %></h1>
+            <div class="justify-start mt-4 flex w-full gap-4">
+                <h1 class="text-gray-600">Offers: <%= manga.offers %></h1>
+                <h1 class="text-gray-600">Highest Offer: <span class="underline font-semibold"><%= highestPrice %></span></h1>
+            </div>
+            <h1>Price: $<%= manga.price %></h1>
+            <h1>Seller: <%= manga.seller %></h1>
+            <h1 class="py-2 border-t-2 border-b-2 border-black text-gray-700 italic"><%= manga.details %></h1>
+            <% if (manga.sellerId == user) { %>
+                <form method="post" class="justify-start mt-4 flex w-full gap-4">
+                    <button class="p-4 bg-blue-500 rounded-lg w-2/6 text-text hover:opacity-80 text-white text-2xl" formaction="/manga/<%= manga.id %>/edit" formmethod="get">Edit</button>
+                    <button class="p-4 bg-red-500 rounded-lg w-2/6 text-text hover:opacity-80 text-white text-2xl" formaction="/manga/<%= manga.id %>?_method=DELETE">Delete</button>
+                </form>
+            <% } else { %>
+                <% if (user) { %>
+                    <div class="justify-start mt-4 flex w-full gap-4">
+                        <a href="/manga/<%= manga._id %>/new" class="p-4 bg-blue-500 text-center rounded-lg w-2/6 text-text hover:opacity-80 text-white text-2xl">Make an Offer</a>
+                    </div>
+                <% } %>
+            <% } %>
+                <div class="flex items-center justify-between w-full">
+                <h1 class="text-xl pb-4 <%= manga.sellerId == user ? 'flex-1' : '' %>"><a href="/manga"><i class="fa-solid fa-arrow-left"></i> <span class="hover:underline">TO MANGA</span></a></h1>
+                <% if (user) { %>
+                    <h1 class="text-xl pb-4 flex-1 text-end"><a href="/users/profile"><span class="hover:underline">TO PROFILE</span><i class="fa-solid fa-arrow-right"></i></a></h1>
+                    <div class="flex-1"></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer.ejs') %>

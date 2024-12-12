@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %>
+<main class="flex-1 flex flex-col items-center justify-center p-8 gap-4">
+    <form class="w-3/5 h-4/5 grid grid-cols-2" enctype="multipart/form-data">
+        <div class="w-4/5 h-4/5 flex flex-col items-center justify-center gap-2">
+            <img alt="manga image" src="/images/<%= manga.image %>" class="max-w-[400px] max-h-[500px]"/>
+            <div class="flex gap-2 items-center">
+                <label for="manga">Update Image Here: </label>
+                <input id="manga" type="file" name="image"/>
+            </div>
+            <input name="current_image" type="hidden" value="<%= manga.image %>"/>
+        </div>
+        <div class="flex flex-col items-start justify-evenly">
+            <input class="font-semibold p-2 text-3xl mb-3 pb-2 bg-slate-300" value="<%= manga.title %>" name="title" />
+            <select name="condition" class="text-text bg-slate-300 p-2">
+                <option value="new"<%= conditionValue == 'new' ? 'selected' : '' %>>New</option>
+                <option value="like_new" <%= conditionValue == 'like_new' ? 'selected' : '' %>>Like New</option>
+                <option value="used" <%= conditionValue == 'used' ? 'selected' : '' %>>Used</option>
+                <option value="damaged" <%= conditionValue == 'damaged' ? 'selected' : '' %>>Damaged</option>
+                <option value="severely_damaged" <%= conditionValue == 'severely_damaged' ? 'selected' : '' %>>Severely Damaged</option>
+            </select>
+            <div class="flex gap-2 items-center">
+                <h1>Price: $</h1>
+                <input class="bg-slate-300 p-2" type="number" step="0.01" min="0" value="<%= manga.price %>" name="price"/>
+            </div>
+            <textarea class="resize-none bg-slate-300 p-2" cols="40" rows="10" name="details"><%= manga.details %></textarea>
+            <button class="p-4 bg-blue-400 rounded-lg w-2/6 text-text hover:bg-blue-600 text-white text-2xl" formaction="/manga/<%= manga.id %>?_method=PUT" formmethod="post">Update</button>
+            <div class="flex items-center">
+                <h1 class="text-xl"><a href="/manga/<%= manga.id %>"><i class="fa-solid fa-arrow-left"></i> <span class="hover:underline">CANCEL</span></a></h1>
+            </div>
+        </div>
+    </form>
+</main>
+<%- include('../partials/footer.ejs') %>

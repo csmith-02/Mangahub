@@ -1,0 +1,27 @@
+.error {
+    position: absolute;
+    background-color: red;
+    width: 25%;
+    right: 20px;
+    padding: 10px;
+    bottom: -80px;
+    color: whitesmoke;
+    text-align: center;
+    font: 700;
+    font-size: x-large;
+    border-radius: 5px;
+}
+
+.success {
+    position: absolute;
+    background-color: lightgreen;
+    width: 25%;
+    right: 20px;
+    padding: 10px;
+    bottom: -80px;
+    color: whitesmoke;
+    text-align: center;
+    font: 700;
+    font-size: x-large;
+    border-radius: 5px;
+}

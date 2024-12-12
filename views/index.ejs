@@ -1,0 +1,15 @@
+<%- include ('./partials/header.ejs') %>
+<main class="flex-1">
+    <div class="grid grid-cols-2 h-full gap-2 p-3">
+        <div class="border-4 border-secondary flex flex-col justify-center">
+            <h1 class="text-text text-3xl font-semibold self-center italic">"The Ultimate Manga Marketplace"</h1>
+            <div class="flex mt-5 w-2/5 mx-auto">
+                <a href="/manga" class="p-3 flex-1 rounded-lg bg-primary text-white text-center text-xl hover:text-secondary">Browse the latest Manga</a>
+            </div>
+        </div>
+        <div class="flex justify-center items-center">
+            <img alt="background anime collage" class="object-cover h-full w-full" src="/images/anime-collage.jpg"/>
+        </div>
+    </div>
+</main>
+<%- include ('./partials/footer.ejs') %>

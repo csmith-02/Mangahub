@@ -1,0 +1,16 @@
+<%- include ('../partials/header.ejs') %>
+<main id="page-body" class="flex-1 flex flex-col gap-2 items-center justify-center">
+    <h1 class="text-center text-3xl font-bold">Welcome to MangaHub!</h1>
+    <form action="/users/new" method="post" id="signup-form" class="p-8 rounded-xl shadow-lg bg-secondary flex flex-col gap-4">
+        <div class="flex gap-4">
+            <input id="firstName" type="text" name="firstName" placeholder="First Name" class="p-4 outline-none rounded-lg" />
+            <input id="lastName" type="text" name="lastName" placeholder="Last Name" class="p-4 outline-none rounded-lg" />
+        </div>
+        <input id="email" type="email" name="email" class="w-full p-4 rounded-lg" placeholder="Email Address" />
+        <input id="pass" type="password" name="password" class="w-full p-4 rounded-lg" placeholder="Password" />
+        <input id="conf-pass" type="password" name="confirm-password" class="w-full p-4 rounded-lg mb-8" placeholder="Confirm Password" />
+        <input id="signup-btn" type="submit" value="Sign up" class="px-8 py-4 rounded-lg bg-white bg-primary opacity-75 hover:cursor-pointer hover:opacity-100 font-bold text-xl" />
+    </form>
+</main>
+<script src="/js/signup.js"></script>
+<%- include ('../partials/footer.ejs') %>

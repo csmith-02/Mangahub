@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+<main class="flex-1 flex justify-center items-center">
+    <div class="grid h-4/5 w-5/6 grid-cols-2">
+        <div class="flex justify-center items-center">
+            <img alt="manga hub logo" class="h-3/5 w-auto" src="/images/mangahub-logo.png" />
+            <div>
+                <h1 class="font-semibold text-3xl">MangaHub</h1>
+                <h1 class="font-semibold text-xl text-left text-gray-500"><br/>List an item in just<br/> a few clicks!</h1>
+            </div>
+        </div>
+        <form action="/manga" method="post" class="bg-secondary p-4 text-white font-bold text-md rounded-lg flex flex-col justify-center gap-4 items-center w-full" enctype="multipart/form-data">
+            <div class="flex gap-3 items-center">
+                <h1>Condition: </h1>
+                <select name="condition" class="text-text">
+                    <option value="new">New</option>
+                    <option value="like_new">Like New</option>
+                    <option value="used">Used</option>
+                    <option value="damaged">Damaged</option>
+                    <option value="severely_damaged">Severely Damaged</option>
+                </select>
+            </div>
+            <div class="flex gap-3 items-center">
+                <h1>Title:</h1>
+                <input required type="text" name="title" class="text-text p-2" />
+            </div>
+            <div class="flex gap-3 items-center">
+                <h1>Price: $</h1>
+                <input required type="number" name="price" placeholder="0.00" step="0.01" class="text-text p-2" min="0.01"/>
+            </div>
+            <div class="flex gap-3 items-center">
+                <textarea required name="details" cols="50" rows="10" placeholder="details..." class="p-2 resize-none text-text"></textarea>
+            </div>
+            <div class="flex gap-3 justify-center items-center">
+                <h1 class="text-white font-bold text-xl">Please select an image &rArr;</h1>
+                <input type="file" name="image" required class="w-1/2"/>
+            </div>
+            <div class="w-full flex justify-center">
+                <input type="submit" value="Post" class="bg-primary p-3 rounded-lg text-xl text-white w-1/5 hover:cursor-pointer"/>
+            </div>
+        </form>
+    </div>
+</main>
+<%- include('../partials/footer.ejs') %>
